@@ -24,6 +24,7 @@ import {
 } from "@dnd-kit/sortable";
 import { DraggableField } from "./DraggableField";
 import { toast } from "./use-toast";
+import { Input } from "@/components/ui/input";
 
 interface Field {
   id: string;
@@ -32,14 +33,46 @@ interface Field {
 }
 
 const availableFields: Field[] = [
-  { id: "text", type: "Text", icon: <Type className="h-4 w-4" /> },
-  { id: "date", type: "Date", icon: <Calendar className="h-4 w-4" /> },
-  { id: "member", type: "Member", icon: <Users className="h-4 w-4" /> },
-  { id: "phone", type: "Phone", icon: <Phone className="h-4 w-4" /> },
-  { id: "email", type: "Email", icon: <Mail className="h-4 w-4" /> },
-  { id: "number", type: "Number", icon: <Hash className="h-4 w-4" /> },
-  { id: "link", type: "Link", icon: <Link className="h-4 w-4" /> },
-  { id: "image", type: "Image", icon: <Image className="h-4 w-4" /> },
+  {
+    id: "text",
+    type: "Text",
+    icon: <Type className="h-4 w-4" aria-hidden="true" />,
+  },
+  {
+    id: "date",
+    type: "Date",
+    icon: <Calendar className="h-4 w-4" aria-hidden="true" />,
+  },
+  {
+    id: "member",
+    type: "Member",
+    icon: <Users className="h-4 w-4" aria-hidden="true" />,
+  },
+  {
+    id: "phone",
+    type: "Phone",
+    icon: <Phone className="h-4 w-4" aria-hidden="true" />,
+  },
+  {
+    id: "email",
+    type: "Email",
+    icon: <Mail className="h-4 w-4" aria-hidden="true" />,
+  },
+  {
+    id: "number",
+    type: "Number",
+    icon: <Hash className="h-4 w-4" aria-hidden="true" />,
+  },
+  {
+    id: "link",
+    type: "Link",
+    icon: <Link className="h-4 w-4" aria-hidden="true" />,
+  },
+  {
+    id: "image",
+    type: "Image",
+    icon: <Image className="h-4 w-4" aria-hidden="true" />,
+  },
 ];
 
 export function NewApp() {
@@ -78,8 +111,6 @@ export function NewApp() {
     });
   };
 
-  // ... keep existing code (left panel JSX)
-
   return (
     <div className="flex h-screen">
       {/* Left Panel */}
@@ -88,7 +119,7 @@ export function NewApp() {
           <div className="border rounded p-2">
             <div className="flex justify-between items-center">
               <span className="font-medium">New App</span>
-              <Plus className="h-4 w-4" />
+              <Plus className="h-4 w-4" aria-hidden="true" />
             </div>
           </div>
 
@@ -111,22 +142,14 @@ export function NewApp() {
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold">Frontend design maken</h2>
               <Button variant="outline" size="sm">
-                <Plus className="h-4 w-4 mr-2" />
+                <Plus className="h-4 w-4 mr-2" aria-hidden="true" />
                 New Process Step
               </Button>
             </div>
 
             <div className="space-y-4">
-              <input
-                type="text"
-                placeholder="Rol"
-                className="w-full border rounded-md p-2"
-              />
-              <input
-                type="text"
-                placeholder="Workload"
-                className="w-full border rounded-md p-2"
-              />
+              <Input type="text" placeholder="Rol" />
+              <Input type="text" placeholder="Workload" />
             </div>
 
             <div className="border rounded-lg p-4">
@@ -134,10 +157,10 @@ export function NewApp() {
                 <h3 className="font-medium">Lo-fi design maken</h3>
                 <div className="flex gap-2">
                   <Button variant="ghost" size="sm">
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-4 w-4" aria-hidden="true" />
                   </Button>
                   <Button variant="ghost" size="sm">
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-4 w-4" aria-hidden="true" />
                   </Button>
                 </div>
               </div>
@@ -165,7 +188,7 @@ export function NewApp() {
         </Card>
       </div>
 
-      {/* Right Panel with Available Fields */}
+      {/* Right Panel */}
       <div className="w-96 p-6 bg-gray-50">
         <h3 className="font-medium mb-4">Available Fields</h3>
         <div className="space-y-2">
@@ -174,6 +197,7 @@ export function NewApp() {
               key={field.id}
               onClick={() => handleFieldClick(field)}
               className="flex items-center space-x-3 w-full p-3 bg-white hover:bg-gray-50 rounded-md transition-colors"
+              type="button"
             >
               {field.icon}
               <span>{field.type}</span>
